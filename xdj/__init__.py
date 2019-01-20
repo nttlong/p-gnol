@@ -38,47 +38,46 @@ def create(urls):
         if item.instance.check_url:
             check_urls.append(item.instance)
 
-        if not __apps__.has_key(item.instance.app_name):
+        if not p2n3.has_key(__apps__, item.instance.app_name):
             import os
             try:
                 if item.instance.app_dir != None:
                     server_static_path = os.sep.join([
                         item.instance.app_dir,"static"
                     ])
-                    urlpatterns+=(
-                        url(r'^' + item.instance.host_dir + '/static/(?P<path>.*)$', django.views.static.serve,
-                            {'document_root': server_static_path, 'show_indexes': True}),
-                    )
+                    urlpatterns += p2n3.create_static(item,server_static_path)
+
             except Exception as ex:
                 raise ex
             __apps__.update({
                 item.instance.app_name:item.instance.app_name
             })
-        if not __build_cached__.has_key(item.instance.on_get.im_func.func_code.co_filename):
-            if item.url=="":
-                print (item.instance.on_get.im_func.func_code.co_filename)
-                urlpatterns +=(
-                    url(r"^"+item.instance.host_dir + "$", item.instance.__view_exec__),
-                    url(r"^"+item.instance.host_dir + "/$", item.instance.__view_exec__)
-                )
-            else:
-                urlpatterns += (
-                    url(r"^"+item.instance.host_dir +"/"+item.url+"$", item.instance.__view_exec__),
-                    url(r"^"+item.instance.host_dir +"/"+item.url+"/$", item.instance.__view_exec__)
-                )
+        if not p2n3.has_key(__build_cached__, p2n3.get_function_code_path(item.instance.on_get)):
+            urlpatterns += p2n3.get_url(item, item.instance.__view_exec__)
+            # if item.url == "":
+            #     urlpatterns += (
+            #         url(r"^"+item.instance.host_dir + "$", item.instance.__view_exec__),
+            #         url(r"^"+item.instance.host_dir + "/$", item.instance.__view_exec__)
+            #     )
+            # else:
+            #     urlpatterns += (
+            #         url(r"^"+item.instance.host_dir +"/"+item.url+"$", item.instance.__view_exec__),
+            #         url(r"^"+item.instance.host_dir +"/"+item.url+"/$", item.instance.__view_exec__)
+            #     )
             for sub_page in item.instance.sub_pages:
-                if item.url == "":
-                    urlpatterns += (
-                        url(r"^" + item.instance.host_dir+"/"+sub_page.url + "$", sub_page.exec_request_get),
-                        url(r"^" + item.instance.host_dir +"/"+sub_page.url+ "/$", sub_page.exec_request_get)
-                    )
-                else:
-                    urlpatterns += (
-                        url(r"^" + item.instance.host_dir + "/" + item.url+"/"+sub_page.url + "$", sub_page.exec_request_get),
-                        url(r"^" + item.instance.host_dir + "/" + item.url+"/"+sub_page.url + "/$", sub_page.exec_request_get)
-                    )
+                urlpatterns += p2n3.get_url(sub_page, sub_page.exec_request_get)
+                # if item.url == "":
+                #     urlpatterns += (
+                #         url(r"^" + item.instance.host_dir+"/"+sub_page.url + "$", sub_page.exec_request_get),
+                #         url(r"^" + item.instance.host_dir +"/"+sub_page.url+ "/$", sub_page.exec_request_get)
+                #     )
+                # else:
+                #     urlpatterns += (
+                #         url(r"^" + item.instance.host_dir + "/" + item.url+"/"+sub_page.url + "$", sub_page.exec_request_get),
+                #         url(r"^" + item.instance.host_dir + "/" + item.url+"/"+sub_page.url + "/$", sub_page.exec_request_get)
+                #     )
             __build_cached__.update({
-                item.instance.on_get.im_func.func_code.co_filename:item.instance.on_get
+                p2n3.get_function_code_path(item.instance.on_get): item.instance.on_get
             })
         # urlpatterns += (
         #     url(r'config/self_paced', ConfigurationModelCurrentAPIView.as_view(model=SelfPacedConfiguration)),
@@ -613,7 +612,7 @@ def clear_language_cache():
 def load_urls():
     from django.conf import settings
     import os
-    settings.ROOT_URLCONF = []
+    settings.ROOT_URLCONF = ()
     apps_dirs = os.sep.join([os.path.dirname(os.path.dirname(__file__)),"apps"])
     ret_url =  load_apps(apps_dirs,[],True)
     return ret_url

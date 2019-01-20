@@ -13,9 +13,17 @@ __lang_cache__ = None
 __build_cached__ = None
 import threading
 lock = threading.Lock()
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 def clear_language_cache():
     global __lang_cache__
     __lang_cache__ = {}
+
+
 class Res(object):
     """
     This class sever for language resource item getter with three level
@@ -185,16 +193,22 @@ class Res(object):
                 return self.a(other[0])
         elif type(other) in [str,unicode]:
             return  self.a(other)
+
+
 class PostData(object):
     pass
+
+
 class ModelUser(object):
     def __init__(self):
-        self.username=""
-        self.is_staff=False
-        self.is_superuser=False
-        self.is_active=False
+        self.username = ""
+        self.is_staff = False
+        self.is_superuser = False
+        self.is_active = False
+
     def is_anonymous(self):
         return
+
 
 def to_json(data):
     import xdj.JSON
@@ -203,8 +217,6 @@ def to_json(data):
 
 class Model(object):
     def __init__(self):
-
-
         self.request = None
         self.response = None
         self.absUrl = None
@@ -328,12 +340,14 @@ class BaseController(object):
         self.on_authenticate = None
         self.rel_login_url = None
         self.params = None
+
     def create_client_model(self, request):
         model = __createModelFromRequest__(
             request, self.rel_login_url, self.res, self.host_dir, self.on_authenticate, self.settings
         )
         return model
-    def __view_exec__(self,request,*args,**kwargs):
+
+    def __view_exec__(self, request, *args, **kwargs):
         import xdj
         from django.http import HttpResponse
         from django.shortcuts import redirect
@@ -387,8 +401,8 @@ class BaseController(object):
                     else:
                         raise ex
 
-    def render_with_template(self,model,template):
-        if isinstance(model,Model):
+    def render_with_template(self, model, template):
+        if isinstance(model, Model):
             from django.http import HttpResponse
             import os
             from mako.lookup import TemplateLookup
@@ -410,6 +424,12 @@ class BaseController(object):
                 type(model),
                 Model
             ))
-    def render(self,model):
-        return self.render_with_template(model,self.template)
+
+    def render(self, model):
+        try:
+            return self.render_with_template(model, self.template)
+        except Exception as ex:
+            logger.debug(ex)
+            raise ex
+
 

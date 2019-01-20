@@ -14,6 +14,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import sys
 
+
+DEBUG = True
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 from django.conf.urls import url, include
@@ -34,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # 'django.contrib.staticfiles',
 )
 AUTHENTICATION_BACKENDS = [
     'permission_backend_nonrel.backends.NonrelPermissionBackend',
@@ -131,6 +134,6 @@ LOGGING = {
         },
     },
 }
-STATIC_URL="/static/"
+# STATIC_URL="/static/"
 import xdj
-ROOT_URLCONF=xdj.load_urls()
+ROOT_URLCONF=tuple(xdj.load_urls())
