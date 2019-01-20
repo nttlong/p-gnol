@@ -1,0 +1,51 @@
+{
+
+  "BULK_EMAIL_MAX_RETRIES": 5,
+  "BULK_EMAIL_DEFAULT_RETRY_DELAY": 30,
+  "GRADES_DOWNLOAD_ROUTING_KEY": "edx.core.high_mem",
+  "SESSION_EXPIRE_AT_BROWSER_CLOSE": true,
+  "DEFAULT_SITE_THEME_": "lv",
+  "ENABLE_COMPREHENSIVE_THEMING_": true,
+  "STATIC_ROOT_BASE_": "/home/nttlong/code/edx/apps/edx/edx-platform/xdj-edx-gnol-static",
+  "STATIC_ROOT_": "/home/nttlong/code/edx/apps/edx/edx-platform/xdj-edx-gnol-static",
+  "STATIC_GRAB": true,
+  "SESSION_COOKIE_AGE_": 10,
+  "MILESTONES_APP": true,
+  "STATIC_URL_BASE_": "/cms/static/xxx/",
+  "STATIC_URL_": "/cms/static/xxx/",
+  "STATICFILES_DIRS_": [
+    "/home/nttlong/code/edx/apps/edx/edx-platform/common/static",
+    "/home/nttlong/code/edx/apps/edx/edx-platform/cms/static"
+
+  ],
+  "MAKO_MODULE_DIR_": "/home/nttlong/code/edx/apps/edx/edx-platform/xdj-tmp-templates",
+  "LMS_TEMPLATE": "/home/nttlong/code/edx/apps/edx/edx-platform/xdj-gnol-lms-templates",
+  "CMS_TEMPLATE": "/home/nttlong/code/edx/apps/edx/edx-platform/xdj-gnol-cms-templates",
+  "MAKO_TEMPLATE_DIRS_BASE": [
+    "/home/nttlong/code/edx/apps/edx/edx-platform/common/templates",
+    "/home/nttlong/code/edx/apps/edx/edx-platform/common/djangoapps/pipeline_mako/templates",
+    "/home/nttlong/code/edx/apps/edx/edx-platform/common/static",
+    "/home/nttlong/code/edx/apps/edx/edx-platform/openedx/core/djangoapps/cors_csrf/templates",
+    "/home/nttlong/code/edx/apps/edx/edx-platform/openedx/core/djangoapps/dark_lang/templates",
+    "/home/nttlong/code/edx/apps/edx/edx-platform/openedx/core/lib/license/templates",
+    "/home/nttlong/code/edx/apps/edx/edx-platform/cms/djangoapps/pipeline_js/templates",
+    "/home/nttlong/code/edx/apps/edx/edx-platform/common/lib/capa/capa/templates"
+
+  ],
+  "WEBPACK_LOADER_":{
+    "DEFAULT": {
+      "BUNDLE_DIR_NAME": "bundles/",
+      "STATS_FILE":"/home/nttlong/code/edx/apps/edx/var/staticfiles/studio/webpack-stats.json"
+    }
+  },
+  "WEBPACK_CONFIG_PATH_": "webpack.dev.config.js",
+  "WIKI_ENABLED": true,
+  "CMS_ROOT_": "/home/nttlong/code/edx/apps/edx/edx-platform/cms/xx",
+  "FAVICON_PATH":"mages/favicon.ico",
+  "LMS_SEGMENT_KEY": "as103",
+  "EMAIL_TEMPLATE_PATH": "/home/nttlong/code/edx/apps/edx/edx-platform/xdj/email_templates",
+  "COLLECTION_TOKENS": "sys.tokens",
+  "COLLECTION_LANGUAGE": "sys.langs",
+  "ENABLE_COURSEWARE_INDEX": true,
+  "ENABLE_LIBRARY_INDEX": true
+}

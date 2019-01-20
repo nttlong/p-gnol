@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a8187abd-c1ca-4fe1-ab82-3c9ea318c4e3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/hr/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/hr/controllers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/hr/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/JSON/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/config/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/config/elastic_search.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/config/email.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/config/feature.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/config/forum.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/config/models.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/config/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/controllers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/email_templates/en/cms_register_activation_email/model.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/email_templates/en/cms_register_activation_email/subject.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/email_templates/en/cms_register_activation_email/template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/email_templates/vi/active_account_lms/model.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/email_templates/vi/active_account_lms/subject.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/email_templates/vi/active_account_lms/template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/errors/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/help.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/help.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/cms/static/js/i18n/vi/djangojs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/djangojs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/djangojs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/djangojs.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/djangojs.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/gen_js_file.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/language/vi/djangojs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/language_resource_files/readme.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/languages.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/medxdb/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/middle_ware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/mysql_fix/fix001.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/mysql_fix/xlms.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/p2n3/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/page/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/compilers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/documents.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/expr_parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/expression_parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/expressions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/mobject.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/pyaggregatebuilders.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/pycollection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/pydocs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/pyfuncs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/pymodel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/pyquery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/pymqr/test01.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/send_email.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdj/static/js/i18n/vi/djangojs.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manage.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+              <folding>
+                <element signature="e#22#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xdj/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4440">
+              <caret line="298" selection-start-line="298" selection-end-line="298" />
+              <folding>
+                <element signature="e#248#279#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv-gnol-3/lib/python3.6/site-packages/django/db/backends/mysql/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xdj/p2n3/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xdj/controllers/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3300">
+              <caret line="220" column="26" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/hr/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1995">
+              <caret line="134" selection-start-line="134" selection-end-line="134" />
+              <folding>
+                <element signature="e#377#386#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>debug.log</find>
+      <find>DATABASE</find>
+      <find>permission_backend_nonrel</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/settings.py" />
+        <option value="$PROJECT_DIR$/apps/hr/settings.py" />
+        <option value="$PROJECT_DIR$/xdj/controllers/__init__.py" />
+        <option value="$PROJECT_DIR$/xdj/p2n3/__init__.py" />
+        <option value="$PROJECT_DIR$/xdj/__init__.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="67" />
+    <option name="y" value="27" />
+    <option name="width" value="1301" />
+    <option name="height" value="741" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="p-gnol" type="b2602c69:ProjectViewProjectNode" />
+              <item name="p-gnol" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="p-gnol" type="b2602c69:ProjectViewProjectNode" />
+              <item name="p-gnol" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="p-gnol" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python">
+      <module name="p-gnol" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a8187abd-c1ca-4fe1-ab82-3c9ea318c4e3" name="Default Changelist" comment="" />
+      <created>1547909272469</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547909272469</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="67" y="25" width="1301" height="743" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24960877" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="DB Browser" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.2931596" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="DB Execution Console" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.53094465" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="11" weight="0.32899022" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/xdj/__init__.py</url>
+          <line>222</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/xdj/__init__.py</url>
+          <line>200</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../edx/python/lib/python2.7/logging/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="533" column="46" selection-start-line="533" selection-start-column="46" selection-end-line="533" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/logging/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="651" selection-start-line="651" selection-end-line="651" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv-gnol/local/lib/python2.7/site-packages/django/db/backends/mysql/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/importlib/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv-gnol/local/lib/python2.7/site-packages/django/contrib/staticfiles/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv-gnol/local/lib/python2.7/site-packages/django/core/management/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="404" selection-start-line="404" selection-end-line="404" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xdj/JSON/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv-gnol/local/lib/python2.7/site-packages/django/conf/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/debug.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xdj/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4440">
+          <caret line="298" selection-start-line="298" selection-end-line="298" />
+          <folding>
+            <element signature="e#248#279#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv-gnol-3/lib/python3.6/site-packages/django/db/backends/mysql/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xdj/p2n3/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xdj/controllers/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3300">
+          <caret line="220" column="26" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/hr/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1995">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
+          <folding>
+            <element signature="e#377#386#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

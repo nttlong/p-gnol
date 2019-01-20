@@ -1,0 +1,17 @@
+{
+  "host_": "webmail.lacviet.com.vn",
+  "host": "smtp.gmail.com",
+  "password": "...",
+  "user_": "lvdomain\\requesthcs",
+  "user": "zugelaing2000@gamil.com",
+  "password_": "",
+  "emai_l": "requesthcs@lacviet.com.vn",
+  "email": "zugelaing2000@gamil.com",
+  "port_": 25,
+  "port": 587,
+  "tsl_": false,
+  "tsl": true,
+  "backend": "django.core.mail.backends.smtp.EmailBackend",
+  "path": "/home/nttlong/code/edx/apps/edx/edx-platform/email_tmp",
+  "contact_email": "nttlong@lacviet.com.vn"
+}
