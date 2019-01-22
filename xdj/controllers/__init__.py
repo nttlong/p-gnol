@@ -316,9 +316,9 @@ def __createModelFromRequest__(request,rel_login_url,res,host_dir,on_authenticat
 
     model = Model();
     model.request = request
-    model.currentUrl = request.build_absolute_uri().split("?")[0]
-    model.absUrl = model.currentUrl[0:model.currentUrl.__len__() - request.path.__len__()]
-    model.appUrl = model.absUrl + "/" + host_dir
+    model.currentUrl = request.build_absolute_uri().split("?")[0].rstrip('/')
+    model.absUrl = model.currentUrl[0:model.currentUrl.__len__()-(lambda: 0 if request.path=='/' else request.path.__len__())()].rstrip('/')
+    model.appUrl = model.absUrl + (lambda: "" if host_dir=="" else "/" + host_dir)()
     model.static = model.appUrl + "/static"
     model.redirect = redirect
     model._ = res

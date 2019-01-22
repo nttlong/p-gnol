@@ -1,0 +1,79 @@
+/* ================================== */
+/* CSS for control sap.f/DynamicPage  */
+/* Fiori 3 theme                      */
+/* ================================== */
+
+.sapFDynamicPage {
+	.sapFDynamicPageContent {
+		background: @sapUiBaseBG;
+	}
+
+	// DynamicPageTitle and Toggle Header Visual Indicator hover state
+	&.sapFDynamicPageTitleClickEnabled {
+
+		.sapFDynamicPageTitle:hover,
+		&.sapFDynamicPageTitleForceHovered .sapFDynamicPageTitle {
+			.title-hover(@sapUiObjectHeaderBackground);
+		}
+
+		.sapFDynamicPageTitleTranslucent:hover,
+		&.sapFDynamicPageTitleForceHovered .sapFDynamicPageTitleTranslucent {
+			.title-hover(@sapUiObjectHeaderBackground);
+		}
+
+		.sapFDynamicPageTitleTransparent:hover,
+		&.sapFDynamicPageTitleForceHovered .sapFDynamicPageTitleTransparent {
+			.title-hover(transparent);
+		}
+
+	}
+}
+
+.sapFDynamicPageToggleHeaderIndicator,
+.sapFDynamicPage:not(.sapFDynamicPageTitleClickEnabled) .sapFDynamicPageHeaderPinButton {
+	margin-left: -0.75rem;
+}
+
+.sapFDynamicPageHeaderPinnable .sapFDynamicPageToggleHeaderIndicator {
+	margin-left: -1.75rem;
+}
+
+.sapFDynamicPageToggleHeaderIndicator,
+.sapFDynamicPageHeaderPinButton {
+	.sapMBtnInner {
+		border-color: @sapUiObjectHeaderBorderColor;
+		min-width: 1.5rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		bottom: 0.675rem;
+
+		.sapMBtnIcon {
+			line-height: 1.5rem;
+		}
+	}
+}
+
+/* Compact */
+.sapUiSizeCompact {
+	.sapFDynamicPageToggleHeaderIndicator,
+	.sapFDynamicPageHeaderPinButton {
+		.sapMBtnInner {
+			bottom: 0.175rem;
+		}
+	}
+}
+
+// Note:
+// The footer selector can`t be nested in the sapFDynamicPage less structure,
+// because the contrast container would not work, as the theme generates css like ".sapContrast.sapFDynamicPageFooter"
+// and will never match ".sapFDynamicPage .sapFDynamicPageFooter"
+.sapFDynamicPageFooter .sapFDynamicPageActualFooterControl {
+	background: fade(@sapUiPageFooterBackground, 90);
+	color: @sapUiPageFooterTextColor;
+	box-shadow: @sapUiShadowLevel1;
+	border-bottom: 0 none;
+}
+
+.title-hover(@backgroundColor) {
+	background-color: darken(@backgroundColor, 2);
+}

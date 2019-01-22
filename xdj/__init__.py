@@ -613,7 +613,7 @@ def load_urls():
     from django.conf import settings
     import os
     settings.ROOT_URLCONF = ()
-    apps_dirs = os.sep.join([os.path.dirname(os.path.dirname(__file__)),"apps"])
+    apps_dirs = os.sep.join([os.path.dirname(os.path.dirname(__file__)),"xdj_apps"])
     ret_url =  load_apps(apps_dirs,[],True)
     return ret_url
 
