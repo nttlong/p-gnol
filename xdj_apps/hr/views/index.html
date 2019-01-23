@@ -4,10 +4,12 @@
 	<title>SAPUI5 Walkthrough</title>
     <script id="sap-ui-bootstrap"
      type="text/javascript"
-     src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+     src="/static/resources/sap-ui-core.js"
      data-sap-ui-theme="sap_belize"
      data-sap-ui-libs="sap.m"
-     data-sap-ui-compatVersion="edge">
+     data-sap-ui-compatVersion="edge"
+
+    >
     </script>
 	<!--<script-->
 		<!--id="sap-ui-bootstrap"-->
@@ -22,9 +24,37 @@
 		<!--}'>-->
 
 	<!--</script>-->
-    <script src="${static}/index.js"></script>
+    <!--<script src="${static}/index.js"></script>-->
 </head>
-<body>
-<div>Hello World</div>
+<body class="sapUiBody" id="content">
+<div id="x" style="display:none">
+    <div data-sap-ui-type="sap.m.SplitContainer">
+        <div data-sap-ui-aggregation="detailPages">
+                <div data-sap-ui-type="sap.m.Page" data-show-footer="true" data-title="XXXXX">
+                </div>
+        </div>
+        <div data-sap-ui-aggregation="masterPages">
+                <div data-sap-ui-type="sap.m.Page" data-show-footer="true" data-title="XXXXX">
+                    <div data-sap-ui-aggregation="content">
+                        <div data-sap-ui-type="sap.m.List">
+                            <div data-sap-ui-aggregation="items">
+                                <div data-sap-ui-type="sap.m.StandardListItem" data-title="Item 1" data-type="Inactive"></div>
+                                <div data-sap-ui-type="sap.m.StandardListItem" data-title="Item 1" data-type="Inactive"></div>
+                                <div data-sap-ui-type="sap.m.StandardListItem" data-title="Item 1" data-type="Inactive"></div>
+                                <div data-sap-ui-type="sap.m.StandardListItem" data-title="Item 1" data-type="Inactive"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<script>
+     var oView = sap.ui.htmlview({
+		viewContent:$("#x").html()
+	});
+	 oView.placeAt('content');
+</script>
 </body>
 </html>
