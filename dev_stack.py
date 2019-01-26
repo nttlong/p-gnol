@@ -4,7 +4,10 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 import django
 django.setup()
 from django.contrib.auth.models import User
-import model.hr
+
+from gnol_models.hr.deps import Depts
+
+Depts.CreatedBy
 
 x=User()
 # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")

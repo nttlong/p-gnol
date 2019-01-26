@@ -1,3 +1,4 @@
+from argparse import _ActionsContainer
 
 from . import utils
 
@@ -16,13 +17,17 @@ class qr(object):
 
     def __init__(self, model = None):
         from django.db.models import Model
-
-        if model and not issubclass(model,Model):
-            raise Exception("Invalid model. The model must be inherit from {0}".format(
-                Model
+        from . models import Base as B
+        self.__xdj_model__ = None
+        if isinstance(model, B):
+            self.__model__ = model.__model__
+            self.__xdj_model__ = model
+        elif issubclass(model, Model):
+            self.__model__ = model
+        else:
+            raise Exception("'model' is invalid. The model must be {0} or {1}".format(
+                Model,B
             ))
-
-        self.__model__ = model
         self.__fields__ = {}
         self.__where__ = None
         self.__select_related__ = []
@@ -159,7 +164,6 @@ class qr(object):
                         ))
         return self
 
-
     def get_page(self,page_size,page_index):
         return self.execute()[page_size * page_index: page_size ]
 
@@ -182,6 +186,48 @@ class qr(object):
                             "from xdj_sql import Fields\n"
                             "qr.where(Fields.Code=='aaa')")
         return self
+
+    def insert(self,*args,**kwargs):
+        from xdj_sql.utils import __field__
+        if self.__xdj_model__:
+            x = self.__xdj_model__ << args
+            ret = x.save()
+            return ret
+        else:
+            data = {}
+            for k,v in args.items():
+                if isinstance(k, __field__):
+                    data.update({
+                        k.__f_name__:v
+                    })
+                else:
+                    data.update({
+                        k: v
+                    })
+            x = self.__model__.create(*data)
+            ret = x.save()
+            return ret
+
+    def update(self,*args,**kwargs):
+        from xdj_sql.utils import __field__
+        if self.__where__:
+            items = self.__model__.objects.filter(self.__where__).all()
+            if items.__len__()>0:
+                item = items[0]
+                if args.__len__()>0:
+                    data = args[0]
+                    if isinstance(data,dict):
+                        for k, v in data.items():
+                            if isinstance(k,__field__):
+                                setattr(item,k.__f_name__,v)
+                            else:
+                                setattr(item, k, v)
+                        ret = item.save()
+                        return ret
+
+
+
+
 
 
 
