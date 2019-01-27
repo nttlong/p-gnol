@@ -6,8 +6,7 @@ django.setup()
 from django.contrib.auth.models import User
 
 from gnol_models.hr.deps import Depts
-
-Depts.CreatedBy
+import test_001
 
 x=User()
 # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")

@@ -69,11 +69,17 @@ class qr(object):
 
     def select_related(self,*args,**kwargs):
         from django.db.models import Model
+        from xdj_sql.utils import __field__
         if args.__len__()>0:
             for x in args:
-                if issubclass(x,Model):
+                try:
+                    if issubclass(x,Model):
+                        self.__select_related__.append(
+                            x.__name__
+                        )
+                except TypeError as ex:
                     self.__select_related__.append(
-                        x.__name__
+                        x.__f_name__
                     )
         return self
 
@@ -224,6 +230,46 @@ class qr(object):
                                 setattr(item, k, v)
                         ret = item.save()
                         return ret
+
+    def join(self,to,local_fields, foreign_fields):
+        from django.db import models as dj_models
+        class obj(object):
+            pass
+        link = obj()
+        link.nullable = None
+        # link_type = obj()
+        # link_type.join_type = 'INNER JOIN'
+        link.table_name = to.__model__.__name__
+        link.parent_alias = to.__model__._meta.db_table
+        link.join_type = 'INNER JOIN'
+        INNER = 'INNER JOIN'
+        LOUTER = 'LEFT OUTER JOIN'
+        # _qr = self.__model__.objects.all().query
+        # _qr.alias_map.update({
+        #     link.parent_alias: link_type
+        # })
+        # _qr.join(link)
+        #Depts = models.ForeignKey(to=Depts.__model__,to_field="id",db_column="DeptId")
+
+        lookup_field = dj_models.ForeignKey(
+            to=to.__model__,
+            to_field=foreign_fields.__f_name__,
+            db_column=local_fields.__f_name__,
+            related_name="Depts"
+
+
+
+            )
+        lookup_field.concrete = True
+        lookup_field.model = to.__model__
+        lookup_field.column = local_fields.__f_name__
+        lookup_field.attname = local_fields.__f_name__
+        self.__model__._meta.add_field(lookup_field)
+        print self.__model__.objects.all()
+        # self.__model__.objects.all().query.join(link)
+        # fx = self.__model__.objects.all().query.join(link)
+
+        pass
 
 
 

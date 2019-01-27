@@ -5,70 +5,94 @@ def table(table_name):
 class __table_wrapper__(object):
     def __init__(self,table_name):
         self.__table_name__ = table_name
+        self.__lookup_fields__ ={}
 
     def get_fields(self,dct,_fields):
         from django.db import models as dj_models
         for x in dct.items():
+
             obj = x[1]
             if hasattr(obj,"name"):
                 field_name = obj.name or x[0]
             else:
                 field_name = x[0]
-            if isinstance(obj,TextField):
-                _fields.update({
-                    field_name: dj_models.TextField(
-                        name = field_name,
-                        max_length = obj.max_len,
-                        null = not obj.require,
-                        unique = obj.unique
-                    )
-                })
-            if isinstance(obj, DateField):
-                _fields.update({
-                    field_name: dj_models.DateField(
-                        name=field_name,
-                        null=not obj.require,
-                        unique=obj.unique
-                    )
-                })
-            if isinstance(obj, NumberField):
-                _fields.update({
-                    field_name: dj_models.FloatField(
-                        name=field_name,
-                        null=not obj.require,
-                        unique=obj.unique
-                    )
-                })
-            if isinstance(obj,IntegerField):
-                _fields.update({
-                    field_name: dj_models.IntegerField(
-                        name=field_name,
-                        null=not obj.require,
-                        unique=obj.unique
-                    )
-                })
-            if isinstance(obj,CharField):
-                _fields.update({
-                    field_name: dj_models.CharField(
-                        name=field_name,
-                        null=not obj.require,
-                        unique=obj.unique,
-                        max_length=obj.max_len
-                    )
-                })
-            if isinstance(obj,BoolField):
-                _fields.update({
-                    field_name: dj_models.BooleanField(
-                        name=field_name,
-                        null=not obj.require,
-                        unique=obj.unique,
-                        max_length=obj.max_len
-                    )
-                })
+            if field_name.__len__()>4 and field_name[0:2]=="__" and field_name[field_name.__len__()-2:field_name.__len__()] =="__":
+                pass
             else:
-                _fields.update({
-                    field_name: obj
-                })
+                if isinstance(obj,TextField):
+                    _fields.update({
+                        field_name: dj_models.TextField(
+                            name = field_name,
+                            max_length = obj.max_len,
+                            null = not obj.require,
+                            unique = obj.unique
+                        )
+                    })
+                elif isinstance(obj, DateField):
+                    _fields.update({
+                        field_name: dj_models.DateField(
+                            name=field_name,
+                            null=not obj.require,
+                            unique=obj.unique
+                        )
+                    })
+                elif isinstance(obj, NumberField):
+                    _fields.update({
+                        field_name: dj_models.FloatField(
+                            name=field_name,
+                            null=not obj.require,
+                            unique=obj.unique
+                        )
+                    })
+                elif isinstance(obj,IntegerField):
+                    _fields.update({
+                        field_name: dj_models.IntegerField(
+                            name=field_name,
+                            null=not obj.require,
+                            unique=obj.unique
+                        )
+                    })
+
+                elif isinstance(obj,CharField):
+                    _fields.update({
+                        field_name: dj_models.CharField(
+                            name=field_name,
+                            null=not obj.require,
+                            unique=obj.unique,
+                            max_length=obj.max_len
+                        )
+                    })
+                elif isinstance(obj,BoolField):
+                    _fields.update({
+                        field_name: dj_models.BooleanField(
+                            name=field_name,
+                            null=not obj.require,
+                            unique=obj.unique,
+                            max_length=obj.max_len
+                        )
+                    })
+                elif isinstance(obj,LookupField):
+                    _fields.update({
+                        field_name: dj_models.ForeignKey(
+                            to=obj.__model__,
+                            to_field=obj.__foreign_fields__,
+                            db_column=obj.__local_fields__
+                        )
+                    })
+                    class runner():
+                        def __init__(self,fn_name):
+                            self.fn_name = fn_name
+
+                        def run(self):
+                            from xdj_sql import Fields
+                            return getattr(Fields, self.fn_name)
+                    self.__lookup_fields__.update({
+                        field_name: runner(field_name)
+                    })
+                else:
+                    _fields.update({
+                        field_name: obj
+                    })
 
         return _fields
 
@@ -142,6 +166,7 @@ class __table_wrapper__(object):
         ret.__model__ = model
         ret.__default_values_fields__ = _default_values_fields
         ret.__require_fields__ = _require_fields
+        ret.__lookup_fields__= self.__lookup_fields__
 
         return ret
 
@@ -153,13 +178,20 @@ class Base(object):
         self.__model__ = None
         self.__default_values_fields__ = None
         self.__require_fields__ = None
+        self.__lookup_fields__ = {}
 
     def __getattr__(self, item):
+        call_fn = self.__lookup_fields__.get(item,None)
+        if call_fn:
+            return call_fn.run
         if item.__len__()>4:
-            if item[0:2] == "__" and item[item.__len__()-1:item.__len__()] == "__":
-                return set.__dict__.get(item,None)
+            if item[0:2] == "__" and item[item.__len__()-2:item.__len__()] == "__":
+                return self.__dict__.get(item,None)
         from xdj_sql import Fields
         return getattr(Fields,item)
+
+    def __call__(self, *args, **kwargs):
+        pass
 
     def __lshift__(self, other):
         from xdj_sql import exceptions
@@ -241,6 +273,13 @@ class BoolField(BaseField):
     def __init__(self, name=None, unique=False, require = False, default_value = None):
         super(BoolField, self).__init__(name,unique,max_len = None,require=require, default_value = default_value)
 
+class LookupField():
+    def __init__(self,model, local_fields, foreign_fields):
+        self.__model__ = model
+        self.__local_fields__ = local_fields
+        self.__foreign_fields__= foreign_fields
+
+
 class fields():
 
     @staticmethod
@@ -266,6 +305,18 @@ class fields():
     @staticmethod
     def boolean(name=None,  unique=False, require=False, default_value=None):
         return BoolField(name=None, unique=False, require=False, default_value=None)
+
+    @staticmethod
+    def lookup(local_fields,foreign_fields):
+        def wrapper(*args,**kwargs):
+            model = args[0](None)
+            return LookupField(
+                model.__model__,
+                local_fields=local_fields,
+                foreign_fields = foreign_fields
+            )
+
+        return wrapper
 
 
 
