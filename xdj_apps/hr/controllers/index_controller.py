@@ -13,3 +13,10 @@ class IndexController(xdj.BaseController):
         :return:
         """
         return self.render(model)
+
+    @xdj.Page(
+        url="home",
+        template="home.html"
+    )
+    class home(object):
+        pass

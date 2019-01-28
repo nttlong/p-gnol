@@ -3,3 +3,4 @@
 /venv-gnol/
 /logs/debug.log
 .pyc
+/logs/

@@ -36,7 +36,8 @@ def get_function_code_path(fn):
 
 def get_url(item,fn):
     from django.conf.urls import url
-    if sys.version_info[0] == 2:
+    # if sys.version_info[0] == 2:
+    if hasattr(item,"instance"):
         if item.url == "":
             ret = (
                 url(r"^" + item.instance.host_dir + "$", fn),
@@ -44,22 +45,70 @@ def get_url(item,fn):
                 )
             return ret
         else:
-            ret= (
-                url(r"^"+item.instance.host_dir + "/" + item.url+"$", fn),
-                url(r"^"+item.instance.host_dir + "/" + item.url+"/$", fn)
+            if item.instance.host_dir == "":
+                ret = (
+                    url(r"^" + item.url + "$", fn),
+                    url(r"^" + item.url + "/$", fn)
                 )
-            return ret
+                return ret
+            else:
+                ret= (
+                    url(r"^" + item.instance.host_dir + "/" + item.url + "$", fn),
+                    url(r"^" + item.instance.host_dir + "/" + item.url + "/$", fn)
+                    )
+                return ret
     else:
-        if item.url == "":
-            ret = (
-                url(item.instance.host_dir + "$", fn),
-                )
-            return ret
+        if item.owner.host_dir == "":
+            if item.url == "":
+                ret = (
+                    url(r"^" + item.owner.host_dir + "$", fn),
+                    url(r"^" + item.owner.host_dir + "/$", fn)
+                    )
+                return ret
+            else:
+                ret= (
+                    url(r"^"+ item.url+"$", fn),
+                    url(r"^"+ item.url+"/$", fn)
+                    )
+                return ret
         else:
-            ret= (
-                url(item.instance.host_dir + "/" + item.url+"$", fn),
-                url(item.instance.host_dir + "/" + item.url+"/$", fn)
-                )
-            return ret
+            if item.url == "":
+                ret = (
+                    url(r"^" + item.owner.host_dir + "$", fn),
+                    url(r"^" + item.owner.host_dir + "/$", fn)
+                    )
+                return ret
+            else:
+                ret= (
+                    url(r"^"+item.owner.host_dir + "/" + item.url+"$", fn),
+                    url(r"^"+item.owner.host_dir + "/" + item.url+"/$", fn)
+                    )
+                return ret
+    # else:
+    #     if hasattr(item, "instance"):
+    #         if item.url == "":
+    #             ret = (
+    #                 url(item.instance.host_dir + "$", fn),
+    #                 )
+    #             return ret
+    #         else:
+    #             ret= (
+    #                 url(item.instance.host_dir + "/" + item.url+"$", fn),
+    #                 url(item.instance.host_dir + "/" + item.url+"/$", fn)
+    #                 )
+    #             return ret
+    #     else:
+    #         if item.url == "":
+    #             ret = (
+    #                 url(r"^" + item.owner.host_dir + "$", fn),
+    #                 url(r"^" + item.owner.host_dir + "/$", fn)
+    #                 )
+    #             return ret
+    #         else:
+    #             ret= (
+    #                 url(r"^"+item.owner.host_dir + "/" + item.url+"$", fn),
+    #                 url(r"^"+item.owner.host_dir + "/" + item.url+"/$", fn)
+    #                 )
+    #             return ret
 
 

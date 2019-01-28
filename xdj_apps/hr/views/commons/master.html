@@ -1,0 +1,22 @@
+<%inherit file="base.html"/>
+<%block name='content'>
+<div data-sap-ui-type="sap.m.SplitContainer">
+        <div data-sap-ui-aggregation="detailPages">
+                
+                <div data-sap-ui-type="sap.m.Page" data-show-footer="true" data-title="<%block name='detail_title'/>">
+                    <div data-sap-ui-aggregation="content">
+                        <%block name="detail"/>
+                    </div>   
+                </div>
+        </div>
+        <div data-sap-ui-aggregation="masterPages">
+                
+                <div data-sap-ui-type="sap.m.Page" data-show-footer="true" data-title="<%block name='master_title'/>">
+                    <div data-sap-ui-aggregation="content">
+                            <%block name="master"/>
+                    </div>
+                </div>
+        </div>
+</div>
+</%block>
+${self.body()}
