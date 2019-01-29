@@ -3,6 +3,7 @@
 /venv-gnol/
 /logs/debug.log
 .pyc
+.cpython-36.pyc
 /logs/
 /venv5/
 /venv4/
