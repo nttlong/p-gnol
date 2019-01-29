@@ -53,11 +53,14 @@ UiUtils.loadHtmlView=function(src,fn){
                 
                 for(var i=0;i<info.scripts.length;i++){
                     _fn=eval(info.scripts[i]);
-                    var _fx = _fn();
-                    var k = Object.keys(_fx)
-                    for(var i=0;i<k.length;i++){
-                        ctrl[k[i]]=_fx[k[i]]
+                    var _fx = _fn(ctrl);
+                    if(_fx){
+                        var k = Object.keys(_fx)
+                        for(var i=0;i<k.length;i++){
+                            ctrl[k[i]]=_fx[k[i]]
+                        }
                     }
+                    
                 }
                 var fx=sap.ui.core.mvc.Controller.extend(view_name,ctrl)
                 var oView = sap.ui.view({

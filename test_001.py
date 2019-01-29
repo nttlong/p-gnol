@@ -7,4 +7,4 @@ x.select_related(Emps.Dept()).select(
     Emps.Dept().Code
 )
 v=x.all()
-print v
+print (v)

@@ -4,3 +4,7 @@
 /logs/debug.log
 .pyc
 /logs/
+/venv5/
+/venv4/
+/venv3/
+/venv2/

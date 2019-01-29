@@ -76,7 +76,8 @@ class __table_wrapper__(object):
                         field_name: dj_models.ForeignKey(
                             to=obj.__model__,
                             to_field=obj.__foreign_fields__,
-                            db_column=obj.__local_fields__
+                            db_column=obj.__local_fields__,
+                            on_delete=None
                         )
                     })
                     class runner():

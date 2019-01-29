@@ -53,7 +53,11 @@ def create(urls):
                 item.instance.app_name:item.instance.app_name
             })
         if not p2n3.has_key(__build_cached__, p2n3.get_function_code_path(item.instance.on_get)):
-            urlpatterns += p2n3.get_url(item, item.instance.__view_exec__)
+            url_pat = p2n3.get_url(item, item.instance.__view_exec__)
+            if isinstance(url_pat,tuple):
+                urlpatterns += p2n3.get_url(item, item.instance.__view_exec__)
+            else:
+                urlpatterns += (p2n3.get_url(item, item.instance.__view_exec__),)
             # if item.url == "":
             #     urlpatterns += (
             #         url(r"^"+item.instance.host_dir + "$", item.instance.__view_exec__),

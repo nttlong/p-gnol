@@ -35,15 +35,16 @@ class qr(object):
 
     def select(self,*args,**kwargs):
         from django.db.models.fields import DeferredAttribute
-        from . utils import __field__
-        from  . import __express_field__
+        from . utils import __field__, check_is_str
+        from . import __express_field__
+
         if args.__len__()>0:
             for x in args:
                 if isinstance(x,DeferredAttribute):
                     self.__fields__.update({
                         x.field_name: 1
                     })
-                elif type(x) in [str, unicode]:
+                elif check_is_str(x):
                     self.__fields__.update({
                         x:1
                     })
@@ -265,7 +266,7 @@ class qr(object):
         lookup_field.column = local_fields.__f_name__
         lookup_field.attname = local_fields.__f_name__
         self.__model__._meta.add_field(lookup_field)
-        print self.__model__.objects.all()
+        print (self.__model__.objects.all())
         # self.__model__.objects.all().query.join(link)
         # fx = self.__model__.objects.all().query.join(link)
 
@@ -279,6 +280,6 @@ class qr(object):
 
 
 Fields = utils.Fields
-import funcs as Funcs
+from . import funcs as Funcs
 from . models import table
 from . models import fields

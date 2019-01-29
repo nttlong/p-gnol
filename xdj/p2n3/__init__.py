@@ -39,10 +39,15 @@ def get_url(item,fn):
     # if sys.version_info[0] == 2:
     if hasattr(item,"instance"):
         if item.url == "":
-            ret = (
-                url(r"^" + item.instance.host_dir + "$", fn),
-                url(r"^" + item.instance.host_dir + "/$", fn)
+            if item.instance.host_dir=="":
+                ret = (
+                    url(r"^" + item.instance.host_dir + "$", fn)
                 )
+            else:
+                ret = (
+                    url(r"^" + item.instance.host_dir + "$", fn),
+                    url(r"^" + item.instance.host_dir + "/$", fn)
+                    )
             return ret
         else:
             if item.instance.host_dir == "":
