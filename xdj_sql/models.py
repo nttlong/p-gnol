@@ -168,6 +168,7 @@ class __table_wrapper__(object):
         ret.__default_values_fields__ = _default_values_fields
         ret.__require_fields__ = _require_fields
         ret.__lookup_fields__= self.__lookup_fields__
+        ret.__origin_class__ = args[0]
 
         return ret
 
@@ -180,6 +181,7 @@ class Base(object):
         self.__default_values_fields__ = None
         self.__require_fields__ = None
         self.__lookup_fields__ = {}
+        self.__origin_class__ = None
 
     def __getattr__(self, item):
         call_fn = self.__lookup_fields__.get(item,None)
@@ -188,51 +190,57 @@ class Base(object):
         if item.__len__()>4:
             if item[0:2] == "__" and item[item.__len__()-2:item.__len__()] == "__":
                 return self.__dict__.get(item,None)
-        from xdj_sql import Fields
-        return getattr(Fields,item)
+        if hasattr(self.__model__,item):
+            from xdj_sql import Fields
+            return getattr(Fields,item)
+        else:
+            raise (Exception("{0} was not found in {1}".format(
+                item, self.__origin_class__
+            )))
 
     def __call__(self, *args, **kwargs):
         pass
 
     def __lshift__(self, other):
+        data = {}
+        if isinstance(self.__default_values_fields__, dict):
+            for k, v in self.__default_values_fields__.items():
+                val = v
+                if callable(v):
+                    val = v()
+
+                data.update({
+                    k: val
+                })
         from xdj_sql import exceptions
         from xdj_sql.utils import __field__
         if isinstance(other,tuple):
-            other = other[0]
-        if isinstance(other, dict):
-            data = {}
-
-            if isinstance(self.__default_values_fields__,dict):
-                for k,v in self.__default_values_fields__.items():
-                    val = v
-                    if callable(v):
-                        val =v()
-
-                    data.update({
-                        k:val
-                    })
+            for x in other:
+                data.update(x)
+        elif isinstance(other, dict):
             for k,v in other.items():
                 if isinstance(k, __field__):
                     data.update({
                         k.__f_name__:v
                     })
-
-            if isinstance(self.__require_fields__,dict):
-                _required_fields = []
-                for k,v in self.__require_fields__.items():
-                    if isinstance(v,TextField):
-                        if data.get(k,"") == "":
-                            _required_fields.append(k)
-                    elif not data.get(k, None):
-                            _required_fields.append(k)
-                if _required_fields.__len__()>0:
-                    raise exceptions.RequireValue("Missing fields {0}".format(_required_fields),_required_fields)
-
-            return self.__model__.objects.create(**data)
         else:
             raise Exception("Can not create instance with {0}".format(
                 type(other)
             ))
+
+        if isinstance(self.__require_fields__,dict):
+            _required_fields = []
+            for k,v in self.__require_fields__.items():
+                if isinstance(v,TextField):
+                    if data.get(k,"") == "":
+                        _required_fields.append(k)
+                elif not data.get(k, None):
+                        _required_fields.append(k)
+            if _required_fields.__len__()>0:
+                raise exceptions.RequireValue("Missing fields {0}".format(_required_fields),_required_fields)
+
+        return self.__model__.objects.create(**data)
+
 
 
 class BaseField(object):

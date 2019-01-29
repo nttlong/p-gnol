@@ -93,7 +93,15 @@ WSGI_APPLICATION = 'wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 DATABASES_ = {
-   'default' : {
+    'default_' : {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'test',
+       'HOST': '127.0.0.1',
+       'PORT': 3306,
+       'USER': 'root',
+       'PASSWORD': 'password'
+   },
+   'default_' : {
        'ENGINE': 'django.db.backends.mysql',
        'NAME': 'hrm1',
        'HOST': '127.0.0.1',
@@ -104,7 +112,15 @@ DATABASES_ = {
 }
 
 DATABASES = {
-   'default' : {
+    'default' : {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'test',
+       'HOST': '172.16.7.63',
+       'PORT': 3306,
+       'USER': 'root',
+       'PASSWORD': '123456'
+   },
+   'default_' : {
        'ENGINE': 'django.db.backends.mysql',
        'NAME': 'lv_lms',
        'HOST': '172.16.7.63',
@@ -162,4 +178,7 @@ LOGGING = {
 }
 # STATIC_URL="/static/"
 import xdj
-ROOT_URLCONF=tuple(xdj.load_urls())
+try:
+    ROOT_URLCONF=tuple(xdj.load_urls())
+except Exception as ex:
+    print (ex)

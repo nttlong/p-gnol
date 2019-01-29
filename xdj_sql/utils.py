@@ -177,6 +177,12 @@ class __field__(object):
         self.__sort__ = "asc"
         return self
 
+    def __rshift__(self, other):
+        return {
+            self.__f_name__:other
+        }
+
+
 
 Fields = __fields__()
 
