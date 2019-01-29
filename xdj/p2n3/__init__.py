@@ -118,3 +118,17 @@ def get_url(item,fn):
     #             return ret
 
 
+def check_is_str(val):
+    import sys
+    if sys.version_info[0] == 3:
+        return type(val) is str
+    else:
+        return type(val) in [str,unicode]
+
+
+def is_has_key(item,key):
+    import sys
+    if sys.version_info[0] == 3:
+        return item.__contains__(key)
+    else:
+        return item.has_key(key)

@@ -229,6 +229,6 @@ def create_model(name, fields=None, app_label='', module='', options=None, admin
 def check_is_str(val):
     import sys
     if sys.version_info[0] == 3:
-        return type(val) is [str]
+        return type(val) is str
     else:
         return type(val) in [str,unicode]

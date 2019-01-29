@@ -44,6 +44,10 @@ class Res(object):
         :param value:
         :return:
         """
+
+        from xdj import p2n3
+        from urllib.parse import quote_plus
+
         global __lang_cache__
         if __lang_cache__ == None:
             __lang_cache__ = {}
@@ -59,11 +63,11 @@ class Res(object):
             "-",
             key
         )
-        if not __lang_cache__.has_key(_key):
+        if not p2n3.is_has_key(__lang_cache__,_key):
             try:
                 lock.acquire()
                 __lang_cache__.update({_key:self.on_get_lang_item(translation.get_language(),"-","-",key,value)})
-                if type(__lang_cache__[_key]) not in [str,unicode]:
+                if p2n3.check_is_str(type(__lang_cache__[_key])):
                     raise Exception("{0} in {1} must return 'str' or 'unicode' value".format(
                         "on_get_language_resource_item",
                         self.on_get_lang_item.func_code.co_filename
@@ -83,6 +87,7 @@ class Res(object):
         :return:
         """
 
+        from xdj import p2n3
         global __lang_cache__
         if __lang_cache__ == None:
             __lang_cache__ = {}
@@ -102,7 +107,7 @@ class Res(object):
             try:
                 lock.acquire()
                 __lang_cache__.update({_key: self.on_get_lang_item(translation.get_language(), self.app_name, "-", key, value)})
-                if type(__lang_cache__[_key]) not in [str,unicode]:
+                if p2n3.check_is_str(__lang_cache__[_key]):
                     raise Exception("{0} in {1} must return 'str' or 'unicode' value".format(
                         "on_get_language_resource_item",
                         self.on_get_lang_item.func_code.co_filename
@@ -121,7 +126,7 @@ class Res(object):
         :param value:
         :return:
         """
-
+        from xdj import p2n3
         global __lang_cache__
         if __lang_cache__ == None:
             __lang_cache__ = {}
@@ -141,7 +146,7 @@ class Res(object):
             try:
                 lock.acquire()
                 __lang_cache__.update({_key:self.on_get_lang_item(translation.get_language(), self.app_name, self.view_name, key, value)})
-                if type(__lang_cache__[_key]) not in [str,unicode]:
+                if p2n3.check_is_str(__lang_cache__[_key]):
                     raise Exception("{0} in {1} must return 'str' or 'unicode' value".format(
                         "on_get_language_resource_item",
                         self.on_get_lang_item.func_code.co_filename
@@ -160,38 +165,43 @@ class Res(object):
         :param other:
         :return:
         """
+        from xdj import p2n3
         if isinstance(other,tuple):
             if other.__len__()>1:
                 return self.g(other[0],other[1])
             elif other.__len__()>0:
                 return self.g(other[0])
-        elif type(other) in [str,unicode]:
-            return  self.g(other)
+        elif p2n3.check_is_str(other):
+            return self.g(other)
+
     def __gt__(self, other):
         """
         Get Language resource at view at html template can be use _>"My Lable"
         :param other:
         :return:
         """
+        from xdj import p2n3
         if isinstance(other,tuple):
             if other.__len__()>1:
                 return self.v(other[0],other[1])
             elif other.__len__()>0:
                 return self.v(other[0])
-        elif type(other) in [str,unicode]:
+        elif p2n3.check_is_str(other):
             return  self.v(other)
+
     def __rshift__(self, other):
         """
         Get application resource at template can be use _>>"My lable"
         :param other:
         :return:
         """
+        from xdj import p2n3
         if isinstance(other,tuple):
             if other.__len__()>1:
                 return self.a(other[0],other[1])
             elif other.__len__()>0:
                 return self.a(other[0])
-        elif type(other) in [str,unicode]:
+        elif p2n3.check_is_str(other):
             return  self.a(other)
 
 
