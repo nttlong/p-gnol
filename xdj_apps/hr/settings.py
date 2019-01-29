@@ -1,5 +1,5 @@
 app_name = "hr"
-host_dir = ""
+host_dir = "hr"
 rel_login_url="login"
 
 

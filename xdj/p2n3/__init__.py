@@ -24,7 +24,7 @@ def create_static(item,server_static_path):
         import django
         if item.instance.host_dir=="":
             return tuple(static('/static/', document_root=server_static_path))
-        return tuple(static(item.instance.host_dir + '/static/(?P<path>.*)$', document_root=server_static_path))
+        return tuple(static("/"+item.instance.host_dir + '/static/', document_root=server_static_path))
 
 
 def get_function_code_path(fn):
