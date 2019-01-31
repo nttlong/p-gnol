@@ -10,8 +10,6 @@ class Emps(BaseHrModel):
     FirstName = sql.fields.text(max_len=200, require = True)
     LastName = sql.fields.text(max_len=200, require = True)
     BirthDate = sql.fields.date(require=True)
-    # DeptId = sql.fields.integer()
-    # Depts = sql.fields models.ForeignKey(to=Depts.__model__,to_field="id",db_column="DeptId")
     @sql.fields.lookup(
         local_fields= "DeptId",
         foreign_fields = "id"
@@ -20,10 +18,6 @@ class Emps(BaseHrModel):
         from gnol_models.hr.deps import Depts as D
         return D
 
-
-fx=Emps.Dept().Code
-
-x=fx
 
 
 

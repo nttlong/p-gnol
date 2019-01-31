@@ -4,20 +4,20 @@
 		height="100%"
 		xmlns:core="sap.ui.core"
 		xmlns:mvc="sap.ui.core.mvc"
-		xmlns="sap.m"
+		xmlns:m="sap.m"
 		controllerName="sap.m.sample.SemanticPage.Page"
 		xmlns:semantic="sap.m.semantic"
         <%block name="prefix"/>
 		displayBlock="true">
 
-	<SplitContainer>
-		<masterPages>
+	<m;SplitContainer>
+		<m:masterPages>
 			<%block name="master"/>
-		</masterPages>
-		<detailPages>
+		</m:masterPages>
+		<m:detailPages>
 			<%block name="detail"/>
-		</detailPages>
-	</SplitContainer>
+		</m:detailPages>
+	</mSplitContainer>
 
 </mvc:View>
 

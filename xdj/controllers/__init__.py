@@ -46,7 +46,7 @@ class Res(object):
         """
 
         from xdj import p2n3
-        from urllib.parse import quote_plus
+
 
         global __lang_cache__
         if __lang_cache__ == None:

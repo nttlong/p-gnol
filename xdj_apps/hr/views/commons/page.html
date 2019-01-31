@@ -1,21 +1,23 @@
 <mvc:View
-		xmlns="sap.m"
+		xmlns:m="sap.m"
 		xmlns:mvc="sap.ui.core.mvc"
 		xmlns:grid="sap.ui.layout.cssgrid"
 		xmlns:f="sap.f"
-		controllerName="sap.f.sample.GridListBasic.C">
+		xmlns="sap.ui.commons"
+		<%block name="prefix"/>
+		>
 
-	<Panel width="100%" class="sapUiResponsiveMargin">
+	<m:Panel width="100%">
 
 
-		<headerToolbar>
+		<m:headerToolbar>
             <%block name="header"/>
 
-		</headerToolbar>
-		<content>
+		</m:headerToolbar>
+		<m:content>
             <%block name="content"/>
 
-		</content>
-	</Panel>
+		</m:content>
+	</m:Panel>
 </mvc:View>
 ${self.body()}

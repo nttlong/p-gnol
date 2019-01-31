@@ -92,18 +92,10 @@ WSGI_APPLICATION = 'wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-DATABASES_ = {
-    'default_' : {
+DATABASES = {
+    'default' : {
        'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'test',
-       'HOST': '127.0.0.1',
-       'PORT': 3306,
-       'USER': 'root',
-       'PASSWORD': 'password'
-   },
-   'default_' : {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'hrm1',
+       'NAME': 'hrm',
        'HOST': '127.0.0.1',
        'PORT': 3306,
        'USER': 'root',
@@ -111,8 +103,8 @@ DATABASES_ = {
    }
 }
 
-DATABASES = {
-    'default' : {
+DATABASES_ = {
+    'default_' : {
        'ENGINE': 'django.db.backends.mysql',
        'NAME': 'test',
        'HOST': '172.16.7.63',
@@ -120,7 +112,7 @@ DATABASES = {
        'USER': 'root',
        'PASSWORD': '123456'
    },
-   'default_' : {
+   'default' : {
        'ENGINE': 'django.db.backends.mysql',
        'NAME': 'lv_lms',
        'HOST': '172.16.7.63',

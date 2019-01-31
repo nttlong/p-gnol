@@ -1,31 +1,32 @@
 <%inherit file="commons/page.html"/>
+<%block name="prefix">
+	xmlns:l="sap.ui.layout"
+</%block>
+
 <%block name="header">
-	<Toolbar height="3rem">
-				<Title text="${_//'test/dasd/dasd'}"/>
-			</Toolbar>
+
 </%block>
 <%block name="content">
-	<Slider value="100" liveChange="onSliderMoved" />
 			<f:GridList
 					id="gridList"
-					headerText="${_//'test/dasd/dasd'}"
+
 					items="{ path: '/' }">
 
 				<f:customLayout>
 					<grid:GridBoxLayout boxMinWidth="17rem"/>
 				</f:customLayout>
 
-				<CustomListItem>
-					<VBox height="100%">
-						<VBox class="sapUiSmallMargin">
-							<layoutData>
-								<FlexItemData growFactor="1" shrinkFactor="0" />
-							</layoutData>
-							<Title text="{title} (Click me)" wrapping="true" />
-							<Label text="{subtitle}" wrapping="true" />
-						</VBox>
-					</VBox>
-				</CustomListItem>
+				<m:CustomListItem>
+					<m:VBox height="100%">
+						<m:VBox class="sapUiSmallMargin">
+							<m:layoutData>
+								<m:FlexItemData growFactor="1" shrinkFactor="0" />
+							</m:layoutData>
+							<m:Title text="{title} (Click me)" wrapping="true" />
+							<m:Label text="{subtitle}" wrapping="true" />
+						</m:VBox>
+					</m:VBox>
+				</m:CustomListItem>
 			</f:GridList>
 </%block>
 <script>
