@@ -1,5 +1,5 @@
 from argparse import _ActionsContainer
-
+from django.db.utils import IntegrityError
 from . import utils
 
 class __alias_field__(object):
@@ -176,7 +176,6 @@ class qr(object):
 
     def first(self):
         return self.execute().first()
-
     def __iter__(self):
         return self.execute().all()
 
@@ -196,24 +195,20 @@ class qr(object):
 
     def insert(self,*args,**kwargs):
         from xdj_sql.utils import __field__
-        if self.__xdj_model__:
-            x = self.__xdj_model__ << args
-            ret = x.save()
-            return ret
-        else:
-            data = {}
-            for k,v in args.items():
-                if isinstance(k, __field__):
-                    data.update({
-                        k.__f_name__:v
-                    })
-                else:
+        data = {}
+        for x in args:
+            if isinstance(x,dict):
+                for k,v in x.items():
                     data.update({
                         k: v
                     })
-            x = self.__model__.create(*data)
-            ret = x.save()
-            return ret
+        try:
+            x = self.__model__.objects.create(**data)
+            return x
+        except Exception as ex:
+            from xdj_sql.error_description import get_error
+            ret = get_error(self.__model__._meta.db_table,ex)
+            return None, ret
 
     def update(self,*args,**kwargs):
         from xdj_sql.utils import __field__
@@ -221,16 +216,18 @@ class qr(object):
             items = self.__model__.objects.filter(self.__where__).all()
             if items.__len__()>0:
                 item = items[0]
-                if args.__len__()>0:
-                    data = args[0]
-                    if isinstance(data,dict):
-                        for k, v in data.items():
-                            if isinstance(k,__field__):
-                                setattr(item,k.__f_name__,v)
-                            else:
-                                setattr(item, k, v)
-                        ret = item.save()
-                        return ret
+                for x in args:
+                    if isinstance(x,dict):
+                        for k,v in x.items():
+                            setattr(item, k, v)
+                try:
+                    item.save()
+                except Exception as ex:
+                    from xdj_sql.error_description import get_error
+                    ret = get_error(self.__model__._meta.db_table, ex)
+                    return None, ret
+        return item, None
+
 
     def join(self,to,local_fields, foreign_fields):
         from django.db import models as dj_models
@@ -273,6 +270,9 @@ class qr(object):
         pass
 
 
+class obj_data(object):
+    def __init__(self,data):
+        self.__dict__.update(data)
 
 
 

@@ -13,7 +13,7 @@
     "port": "3306",
     "user":"root",
     "password":"password",
-    "name": "hrm1",
+    "name": "hrm2",
     "engine": "django.db.backends.mysql"
   },
   "sql_": {
