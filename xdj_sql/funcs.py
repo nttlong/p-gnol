@@ -18,10 +18,16 @@ def contains(field,txt):
     :param txt:
     :return:
     """
+    from django.db.models import Q
+
     from .utils import __field__
     if isinstance(field,__field__):
         if field.__f_name__.count("__icontains")==0:
             field.__f_name__ = "{0}__icontains".format(field.__f_name__)
+            field.__expr__ = {
+                field.__f_name__:txt
+            }
+            field.__expr__ = Q(**field.__expr__)
     return field
 def call(fn,*args,**kwargs):
     from .utils import __field__

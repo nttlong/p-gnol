@@ -3,10 +3,16 @@ from xdj_sql import qr
 
 
 def department_create(id,Code,Name, Username,parent_id):
-    # data = Depts << (
-    #     Depts.Code >> Code,
-    #     Depts.Name >> Name
-    # )
+    """
+    Create or update dapartment
+    :param id: if id ==0 try to create new department
+    :param Code:
+    :param Name:
+    :param Username:
+    :param parent_id:
+    :return:
+    """
+
     level = 1
     level_code = None
     if parent_id:
