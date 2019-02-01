@@ -1,5 +1,5 @@
 def concat(*args,**kwargs):
-    from . utils import __field__
+    from . utils import __field__, check_is_str
 
     from django.db.models import Value
     from django.db.models.functions import Concat
@@ -8,9 +8,11 @@ def concat(*args,**kwargs):
         for x in args:
             if isinstance(x, __field__):
                 params.append(x.__f_name__)
-            elif type(x) in [str, unicode]:
+            elif check_is_str(x):
                 params.append(Value(x))
     return Concat(*params)
+
+
 def contains(field,txt):
     """
     icontains
